@@ -62,11 +62,11 @@
           <div class="filters">
             <select class="filter-select">
               <option>全部类型</option>
-              <option>未佩戴安全帽</option>
-              <option>未穿反光衣</option>
-              <option>摔倒检测</option>
-              <option>攀爬行为</option>
-              <option>奔跑检测</option>
+              <option>横越线路违规</option>
+              <option>侵入邻线</option>
+              <option>未佩戴防护帽</option>
+              <option>未留安全距离</option>
+              <option>未执行三同时制度</option>
             </select>
             <select class="filter-select">
               <option>全部严重级别</option>
@@ -134,7 +134,7 @@
         </div>
 
         <div class="rules-section">
-          <h3>安全装备检测</h3>
+          <h3>铁路作业安全检测规则</h3>
           <div class="rule-list">
             <div class="rule-item">
               <div class="rule-icon helmet">
@@ -143,8 +143,8 @@
                 </svg>
               </div>
               <div class="rule-content">
-                <div class="rule-name">安全帽检测</div>
-                <div class="rule-desc">检测工作区域人员是否佩戴安全帽</div>
+                <div class="rule-name">防护帽佩戴检测</div>
+                <div class="rule-desc">检测检车员作业时是否佩戴防护帽</div>
               </div>
               <div class="rule-toggle">
                 <label class="toggle-switch">
@@ -157,12 +157,12 @@
             <div class="rule-item">
               <div class="rule-icon vest">
                 <svg viewBox="0 0 24 24" width="20" height="20">
-                  <path fill="currentColor" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+                  <path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                 </svg>
               </div>
               <div class="rule-content">
-                <div class="rule-name">反光衣检测</div>
-                <div class="rule-desc">检测作业人员是否穿着反光衣</div>
+                <div class="rule-name">横越线路规范检测</div>
+                <div class="rule-desc">检测横越线路时是否执行手指口述眼看制度</div>
               </div>
               <div class="rule-toggle">
                 <label class="toggle-switch">
@@ -175,35 +175,30 @@
             <div class="rule-item">
               <div class="rule-icon goggles">
                 <svg viewBox="0 0 24 24" width="20" height="20">
-                  <path fill="currentColor" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
-                </svg>
-              </div>
-              <div class="rule-content">
-                <div class="rule-name">护目镜检测</div>
-                <div class="rule-desc">检测特定区域人员是否佩戴护目镜</div>
-              </div>
-              <div class="rule-toggle">
-                <label class="toggle-switch">
-                  <input type="checkbox">
-                  <span class="toggle-slider"></span>
-                </label>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="rules-section">
-          <h3>异常行为检测</h3>
-          <div class="rule-list">
-            <div class="rule-item">
-              <div class="rule-icon fall">
-                <svg viewBox="0 0 24 24" width="20" height="20">
                   <path fill="currentColor" d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/>
                 </svg>
               </div>
               <div class="rule-content">
-                <div class="rule-name">摔倒检测</div>
-                <div class="rule-desc">实时监测人员摔倒情况并报警</div>
+                <div class="rule-name">邻线侵入检测</div>
+                <div class="rule-desc">检测检车员行走时是否侵入邻线危险区域</div>
+              </div>
+              <div class="rule-toggle">
+                <label class="toggle-switch">
+                  <input type="checkbox" checked>
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="rule-item">
+              <div class="rule-icon fall">
+                <svg viewBox="0 0 24 24" width="20" height="20">
+                  <path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                </svg>
+              </div>
+              <div class="rule-content">
+                <div class="rule-name">安全距离检测</div>
+                <div class="rule-desc">检测通过列车端部时是否留有规定安全距离</div>
               </div>
               <div class="rule-toggle">
                 <label class="toggle-switch">
@@ -216,48 +211,12 @@
             <div class="rule-item">
               <div class="rule-icon climb">
                 <svg viewBox="0 0 24 24" width="20" height="20">
-                  <path fill="currentColor" d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/>
+                  <path fill="currentColor" d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7"/>
                 </svg>
               </div>
               <div class="rule-content">
-                <div class="rule-name">攀爬检测</div>
-                <div class="rule-desc">检测非法攀爬行为</div>
-              </div>
-              <div class="rule-toggle">
-                <label class="toggle-switch">
-                  <input type="checkbox" checked>
-                  <span class="toggle-slider"></span>
-                </label>
-              </div>
-            </div>
-
-            <div class="rule-item">
-              <div class="rule-icon run">
-                <svg viewBox="0 0 24 24" width="20" height="20">
-                  <path fill="currentColor" d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/>
-                </svg>
-              </div>
-              <div class="rule-content">
-                <div class="rule-name">奔跑检测</div>
-                <div class="rule-desc">检测危险区域奔跑行为</div>
-              </div>
-              <div class="rule-toggle">
-                <label class="toggle-switch">
-                  <input type="checkbox">
-                  <span class="toggle-slider"></span>
-                </label>
-              </div>
-            </div>
-
-            <div class="rule-item">
-              <div class="rule-icon gather">
-                <svg viewBox="0 0 24 24" width="20" height="20">
-                  <path fill="currentColor" d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/>
-                </svg>
-              </div>
-              <div class="rule-content">
-                <div class="rule-name">人员聚集检测</div>
-                <div class="rule-desc">检测超过阈值的人员聚集</div>
+                <div class="rule-name">三同时制度检测</div>
+                <div class="rule-desc">检测上下电动脱轨器时是否执行手扶牢脚踏实眼看准</div>
               </div>
               <div class="rule-toggle">
                 <label class="toggle-switch">
@@ -421,78 +380,88 @@ const selectedViolation = ref<Violation | null>(null)
 const violations = ref<Violation[]>([
   {
     id: '1',
-    type: 'no_helmet',
+    type: 'cross_line',
     severity: 'high',
-    description: '检测到车间A区域工作人员未佩戴安全帽，持续时间超过5秒。系统通过YOLOv12算法检测到人员头部区域未识别到安全帽特征，连续5帧确认违规行为。',
-    location: '2号楼车间A',
+    description: '检测到检车员在横越线路时未执行手指口述眼看制度。系统通过视频分析识别到人员直接横越线路，未进行规定的安全确认动作，存在严重安全隐患。',
+    location: '股道3-4之间',
     camera_id: 'CAM-003',
     timestamp: new Date(Date.now() - 120000).toISOString(),
     imageUrl: '/1.jpg',
-    duration: '5秒',
+    duration: '3秒',
     confidence: 96.8,
     personnel: {
       name: '张伟',
       employee_id: 'EMP-10023',
-      department: '生产部'
+      department: '检车段'
     }
   },
   {
     id: '2',
-    type: 'fall',
+    type: 'intrusion',
     severity: 'critical',
-    description: '检测到人员摔倒，已触发紧急响应程序。系统识别到人体姿态异常变化，从直立到水平状态转换时间小于0.5秒，判定为摔倒事件。',
-    location: '3号楼仓库',
-    camera_id: 'CAM-004',
+    description: '检测到检车员行走时侵入邻线，距离邻线列车不足2米。系统识别到人员位置超出安全界限，进入相邻股道危险区域，已触发紧急告警。',
+    location: '6号股道',
+    camera_id: 'CAM-006',
     timestamp: new Date(Date.now() - 300000).toISOString(),
     imageUrl: '/2.jpg',
-    duration: '持续倒地',
+    duration: '持续8秒',
     confidence: 98.5,
     personnel: {
       name: '李强',
       employee_id: 'EMP-10067',
-      department: '物流部'
+      department: '检车段'
     }
   },
   {
     id: '3',
-    type: 'no_vest',
-    severity: 'medium',
-    description: '检测到通道人员未穿反光衣。在规定需穿戴反光衣的区域内，系统未检测到人员上身反光材料特征。',
-    location: '1号楼东侧',
+    type: 'no_helmet',
+    severity: 'high',
+    description: '检测到检车员作业时未佩戴防护帽。系统通过YOLOv12算法检测到作业人员头部区域未识别到防护帽特征，连续多帧确认违规行为。',
+    location: '2号股道车底',
     camera_id: 'CAM-002',
     timestamp: new Date(Date.now() - 450000).toISOString(),
     imageUrl: '/3.jpg',
-    duration: '12秒',
-    confidence: 92.3
-  },
-  {
-    id: '4',
-    type: 'climb',
-    severity: 'high',
-    description: '检测到人员攀爬围栏，存在安全隐患。系统识别到人员四肢呈攀爬姿态，且位置高度超过地面1.5米。',
-    location: '室外场地',
-    camera_id: 'CAM-005',
-    timestamp: new Date(Date.now() - 600000).toISOString(),
-    imageUrl: '/4.jpg',
-    duration: '8秒',
-    confidence: 94.1,
+    duration: '作业全程',
+    confidence: 97.3,
     personnel: {
       name: '王明',
       employee_id: 'EMP-10145',
-      department: '维修部'
+      department: '检车段'
+    }
+  },
+  {
+    id: '4',
+    type: 'unsafe_distance',
+    severity: 'high',
+    description: '检测到检车员进入现场通过列车端部时未留有安全距离。人员与列车端部距离小于1米，违反安全作业规定，存在被夹挤风险。',
+    location: '5号股道列车端部',
+    camera_id: 'CAM-005',
+    timestamp: new Date(Date.now() - 600000).toISOString(),
+    imageUrl: '/4.jpg',
+    duration: '4秒',
+    confidence: 94.1,
+    personnel: {
+      name: '赵刚',
+      employee_id: 'EMP-10198',
+      department: '检车段'
     }
   },
   {
     id: '5',
-    type: 'gather',
+    type: 'three_simultaneous',
     severity: 'medium',
-    description: '检测到人员聚集超过10人，持续时间5分钟。在2平方米范围内检测到12人聚集，超过安全密度阈值。',
-    location: '1号楼大厅',
+    description: '检测到检车员上下电动脱轨器时未执行三同时制度（手扶牢、脚踏实、眼看准）。系统识别到作业动作不规范，存在摔倒或踏空风险。',
+    location: '1号股道电动脱轨器',
     camera_id: 'CAM-001',
     timestamp: new Date(Date.now() - 900000).toISOString(),
     imageUrl: '/5.jpg',
-    duration: '5分钟',
-    confidence: 91.7
+    duration: '上下过程',
+    confidence: 91.7,
+    personnel: {
+      name: '刘洋',
+      employee_id: 'EMP-10223',
+      department: '检车段'
+    }
   }
 ])
 
@@ -523,12 +492,11 @@ const formatFullTime = (timestamp: string) => {
 
 const getTypeLabel = (type: string) => {
   const labels: Record<string, string> = {
-    no_helmet: '未佩戴安全帽',
-    no_vest: '未穿反光衣',
-    fall: '摔倒检测',
-    climb: '攀爬行为',
-    run: '奔跑检测',
-    gather: '人员聚集'
+    cross_line: '横越线路未执行手指口述眼看',
+    intrusion: '行走时侵入邻线',
+    no_helmet: '作业时未佩戴防护帽',
+    unsafe_distance: '未留有安全距离',
+    three_simultaneous: '未执行三同时制度'
   }
   return labels[type] || type
 }
