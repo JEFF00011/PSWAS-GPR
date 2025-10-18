@@ -275,7 +275,7 @@ interface Template {
   id: string
   name: string
   description: string
-  nodes: NodeType[]
+  nodes: string[]
 }
 
 const nodeTypes = ref<NodeType[]>([
@@ -371,19 +371,19 @@ const templates = ref<Template[]>([
     id: '1',
     name: '标准检测流程',
     description: '视频输入 → 步态识别 → 人脸识别 → 合规检测 → 告警',
-    nodes: []
+    nodes: ['video_input', 'gait_recognition', 'face_recognition', 'compliance_check', 'alert_trigger']
   },
   {
     id: '2',
     name: '快速身份验证',
     description: '视频输入 → 人脸识别 → 身份核验 → 数据存储',
-    nodes: []
+    nodes: ['video_input', 'face_recognition', 'identity_verify', 'data_storage']
   },
   {
     id: '3',
     name: '重点监控模式',
     description: '视频输入 → 步态识别 → 违规判定 → 告警触发',
-    nodes: []
+    nodes: ['video_input', 'gait_recognition', 'violation_detect', 'alert_trigger']
   }
 ])
 
@@ -519,7 +519,34 @@ const saveTemplate = () => {
 }
 
 const loadTemplate = (template: Template) => {
-  alert(`加载模板：${template.name}`)
+  if (canvasNodes.value.length > 0) {
+    if (!confirm('加载模板将清空当前画布，确定继续吗？')) {
+      return
+    }
+  }
+
+  canvasNodes.value = []
+
+  const startX = 150
+  const startY = 150
+  const spacing = 250
+
+  template.nodes.forEach((nodeType, index) => {
+    const nodeTemplate = nodeTypes.value.find(n => n.type === nodeType)
+    if (nodeTemplate) {
+      const newNode: CanvasNode = {
+        ...nodeTemplate,
+        id: `${nodeType}_${Date.now()}_${index}`,
+        x: startX + (index * spacing),
+        y: startY,
+        isActive: false,
+        isExecuting: false
+      }
+      canvasNodes.value.push(newNode)
+    }
+  })
+
+  alert(`已加载模板：${template.name}（${canvasNodes.value.length}个节点）`)
 }
 </script>
 
