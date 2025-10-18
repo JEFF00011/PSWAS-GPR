@@ -1,13 +1,13 @@
 <template>
   <div class="face-recognition">
     <div class="page-header">
-      <h1>人脸识别模块</h1>
-      <p>高精度身份验证 - 1-5米范围内99%准确率</p>
+      <h1>检车员身份验证</h1>
+      <p>基于人脸识别的身份验证 - 3个监控点在线</p>
     </div>
 
     <div class="stats-row">
       <div class="stat-box">
-        <div class="stat-label">识别准确率</div>
+        <div class="stat-label">验证准确率</div>
         <div class="stat-value">99.2%</div>
       </div>
       <div class="stat-box">
@@ -15,12 +15,12 @@
         <div class="stat-value">128ms</div>
       </div>
       <div class="stat-box">
-        <div class="stat-label">人脸模板数</div>
-        <div class="stat-value">12,847</div>
+        <div class="stat-label">检车员模板数</div>
+        <div class="stat-value">156</div>
       </div>
       <div class="stat-box">
-        <div class="stat-label">今日识别</div>
-        <div class="stat-value">9,324</div>
+        <div class="stat-label">今日验证</div>
+        <div class="stat-value">35</div>
       </div>
     </div>
 
@@ -30,10 +30,10 @@
           <h2>实时识别结果</h2>
           <div class="filters">
             <select class="filter-select">
-              <option>全部摄像头</option>
-              <option>CAM-001 主入口</option>
-              <option>CAM-002 东侧通道</option>
-              <option>CAM-003 生产车间</option>
+              <option>全部监控点</option>
+              <option>CAM-001 1号股道作业区</option>
+              <option>CAM-003 股道3-4横越点</option>
+              <option>CAM-005 5号股道端部</option>
             </select>
             <select class="filter-select">
               <option>全部置信度</option>
@@ -183,28 +183,28 @@ interface FaceRecord {
 const faceRecords = ref<FaceRecord[]>([
   {
     id: '1',
-    name: '陈明',
-    employee_id: 'EMP-10045',
-    department: '研发部',
-    location: '主入口',
+    name: '张伟',
+    employee_id: 'EMP-10023',
+    department: '检车段',
+    location: '1号股道作业区',
     confidence: 0.987,
     timestamp: new Date(Date.now() - 15000).toISOString()
   },
   {
     id: '2',
-    name: '赵丽',
-    employee_id: 'EMP-10178',
-    department: '市场部',
-    location: '生产车间',
+    name: '王明',
+    employee_id: 'EMP-10145',
+    department: '检车段',
+    location: '股道3-4横越点',
     confidence: 0.945,
     timestamp: new Date(Date.now() - 45000).toISOString()
   },
   {
     id: '3',
-    name: '孙浩',
-    employee_id: 'EMP-10092',
-    department: '技术部',
-    location: '东侧通道',
+    name: '赵刚',
+    employee_id: 'EMP-10198',
+    department: '检车段',
+    location: '5号股道端部',
     confidence: 0.923,
     timestamp: new Date(Date.now() - 90000).toISOString()
   },

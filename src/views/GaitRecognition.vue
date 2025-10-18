@@ -1,8 +1,8 @@
 <template>
   <div class="gait-recognition">
     <div class="page-header">
-      <h1>步态识别模块</h1>
-      <p>远距离身份识别 - 50米范围内步态分析</p>
+      <h1>检车员步态识别</h1>
+      <p>基于步态特征的检车员身份识别 - 4个监控点在线</p>
     </div>
 
     <div class="stats-row">
@@ -15,12 +15,12 @@
         <div class="stat-value">245ms</div>
       </div>
       <div class="stat-box">
-        <div class="stat-label">步态模板数</div>
-        <div class="stat-value">8,523</div>
+        <div class="stat-label">检车员模板数</div>
+        <div class="stat-value">156</div>
       </div>
       <div class="stat-box">
         <div class="stat-label">今日识别</div>
-        <div class="stat-value">6,523</div>
+        <div class="stat-value">52</div>
       </div>
     </div>
 
@@ -30,10 +30,11 @@
           <h2>实时识别</h2>
           <div class="controls">
             <select class="camera-select">
-              <option>全部摄像头</option>
-              <option>CAM-001 主入口</option>
-              <option>CAM-002 东侧通道</option>
-              <option>CAM-004 仓库区域</option>
+              <option>全部监控点</option>
+              <option>CAM-001 1号股道作业区</option>
+              <option>CAM-002 2号股道车底</option>
+              <option>CAM-005 5号股道端部</option>
+              <option>CAM-006 6号股道邻线</option>
             </select>
           </div>
         </div>
@@ -165,17 +166,17 @@ const recognitionRecords = ref<RecognitionRecord[]>([
     id: '1',
     name: '张伟',
     employee_id: 'EMP-10023',
-    department: '技术部',
-    location: '1号楼大厅',
+    department: '检车段',
+    location: '1号股道作业区',
     confidence: 0.923,
     timestamp: new Date(Date.now() - 30000).toISOString()
   },
   {
     id: '2',
-    name: '李娜',
-    employee_id: 'EMP-10156',
-    department: '生产部',
-    location: '东侧通道',
+    name: '李强',
+    employee_id: 'EMP-10067',
+    department: '检车段',
+    location: '2号股道车底',
     confidence: 0.876,
     timestamp: new Date(Date.now() - 120000).toISOString()
   },
