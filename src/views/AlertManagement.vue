@@ -111,7 +111,7 @@
                 >
                   解决
                 </button>
-                <button class="action-btn details">详情</button>
+                <button class="action-btn details" @click="viewAlertDetails(alert)">详情</button>
               </div>
             </div>
 
@@ -137,9 +137,11 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import { useRouter } from 'vue-router'
 import { useSystemStore } from '../stores/system'
 
 const systemStore = useSystemStore()
+const router = useRouter()
 
 const currentTab = ref('pending')
 const severityFilter = ref('')
@@ -226,6 +228,22 @@ const acknowledgeAlert = (id: string) => {
 
 const resolveAlert = (id: string) => {
   systemStore.updateAlertStatus(id, 'resolved')
+}
+
+const viewAlertDetails = (alert: any) => {
+  const typeRouteMap: Record<string, string> = {
+    cross_line: '/compliance',
+    intrusion: '/compliance',
+    no_helmet: '/compliance',
+    unsafe_distance: '/compliance',
+    three_simultaneous: '/compliance',
+    no_vest: '/compliance',
+    fall: '/compliance',
+    climb: '/compliance'
+  }
+
+  const targetRoute = typeRouteMap[alert.alert_type] || '/compliance'
+  router.push(targetRoute)
 }
 </script>
 
