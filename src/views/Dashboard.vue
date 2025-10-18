@@ -8,9 +8,9 @@
           </svg>
         </div>
         <div class="stat-content">
-          <div class="stat-label">今日识别总数</div>
+          <div class="stat-label">今日检测总数</div>
           <div class="stat-value">{{ stats.total_recognitions.toLocaleString() }}</div>
-          <div class="stat-trend positive">+12.5% 较昨日</div>
+          <div class="stat-trend positive">+8.3% 较昨日</div>
         </div>
       </div>
 
@@ -21,9 +21,9 @@
           </svg>
         </div>
         <div class="stat-content">
-          <div class="stat-label">步态识别</div>
+          <div class="stat-label">检车员识别</div>
           <div class="stat-value">{{ stats.gait_recognitions.toLocaleString() }}</div>
-          <div class="stat-trend positive">+8.3% 较昨日</div>
+          <div class="stat-trend positive">+6.2% 较昨日</div>
         </div>
       </div>
 
@@ -34,9 +34,9 @@
           </svg>
         </div>
         <div class="stat-content">
-          <div class="stat-label">人脸识别</div>
+          <div class="stat-label">身份验证</div>
           <div class="stat-value">{{ stats.face_recognitions.toLocaleString() }}</div>
-          <div class="stat-trend positive">+15.2% 较昨日</div>
+          <div class="stat-trend positive">+10.5% 较昨日</div>
         </div>
       </div>
 
@@ -47,9 +47,9 @@
           </svg>
         </div>
         <div class="stat-content">
-          <div class="stat-label">今日告警</div>
+          <div class="stat-label">安全告警</div>
           <div class="stat-value">{{ stats.total_alerts.toLocaleString() }}</div>
-          <div class="stat-trend negative">+5.7% 较昨日</div>
+          <div class="stat-trend negative">-15.3% 较昨日</div>
         </div>
       </div>
     </div>
@@ -142,13 +142,11 @@ const recentAlerts = computed(() => systemStore.alerts.slice(0, 5))
 
 const getAlertTypeLabel = (type: string) => {
   const labels: Record<string, string> = {
-    no_helmet: '未佩戴安全帽',
-    no_vest: '未穿反光衣',
-    fall: '摔倒检测',
-    climb: '攀爬行为',
-    run: '奔跑检测',
-    gather: '人员聚集',
-    intrusion: '区域入侵'
+    cross_line: '横越线路违规',
+    intrusion: '侵入邻线',
+    no_helmet: '未佩戴防护帽',
+    unsafe_distance: '安全距离不足',
+    three_simultaneous: '未执行三同时'
   }
   return labels[type] || type
 }
@@ -185,11 +183,11 @@ const addCamera = () => {
 
 onMounted(() => {
   systemStore.updateSystemStats({
-    total_recognitions: 15847,
-    gait_recognitions: 6523,
-    face_recognitions: 9324,
-    total_alerts: 23,
-    critical_alerts: 3,
+    total_recognitions: 87,
+    gait_recognitions: 52,
+    face_recognitions: 35,
+    total_alerts: 5,
+    critical_alerts: 1,
     average_response_time: 245
   })
 
@@ -197,70 +195,100 @@ onMounted(() => {
     {
       id: '1',
       camera_id: 'CAM-001',
-      name: '主入口',
-      location: '1号楼大厅',
+      name: '1号股道检车作业区',
+      location: '1号股道',
       status: 'online',
       enabled_features: { gait: true, face: true, action: true }
     },
     {
       id: '2',
       camera_id: 'CAM-002',
-      name: '东侧通道',
-      location: '1号楼东侧',
+      name: '2号股道车底监控',
+      location: '2号股道',
       status: 'online',
       enabled_features: { gait: true, face: false, action: true }
     },
     {
       id: '3',
       camera_id: 'CAM-003',
-      name: '生产车间',
-      location: '2号楼车间A',
+      name: '股道3-4横越点',
+      location: '股道3-4之间',
       status: 'online',
       enabled_features: { gait: false, face: true, action: true }
     },
     {
       id: '4',
-      camera_id: 'CAM-004',
-      name: '仓库区域',
-      location: '3号楼仓库',
+      camera_id: 'CAM-005',
+      name: '5号股道列车端部',
+      location: '5号股道',
       status: 'online',
       enabled_features: { gait: true, face: true, action: true }
+    },
+    {
+      id: '5',
+      camera_id: 'CAM-006',
+      name: '6号股道邻线监控',
+      location: '6号股道',
+      status: 'online',
+      enabled_features: { gait: true, face: false, action: true }
     }
   ]
 
   systemStore.alerts = [
     {
       id: '1',
-      alert_type: 'no_helmet',
-      severity: 'high',
-      camera_id: 'CAM-003',
-      location: '2号楼车间A',
-      description: '检测到工作人员未佩戴安全帽',
-      image_url: '',
-      status: 'pending',
-      created_at: new Date(Date.now() - 2 * 60000).toISOString()
-    },
-    {
-      id: '2',
       alert_type: 'intrusion',
       severity: 'critical',
-      camera_id: 'CAM-004',
-      location: '3号楼仓库',
-      description: '非授权人员进入限制区域',
+      camera_id: 'CAM-006',
+      location: '6号股道',
+      description: '检车员行走时侵入邻线，距离邻线列车不足2米',
       image_url: '',
       status: 'pending',
       created_at: new Date(Date.now() - 5 * 60000).toISOString()
     },
     {
-      id: '3',
-      alert_type: 'no_vest',
-      severity: 'medium',
+      id: '2',
+      alert_type: 'no_helmet',
+      severity: 'high',
       camera_id: 'CAM-002',
-      location: '1号楼东侧',
-      description: '检测到人员未穿反光衣',
+      location: '2号股道车底',
+      description: '检车员作业时未佩戴防护帽',
       image_url: '',
       status: 'pending',
-      created_at: new Date(Date.now() - 15 * 60000).toISOString()
+      created_at: new Date(Date.now() - 8 * 60000).toISOString()
+    },
+    {
+      id: '3',
+      alert_type: 'cross_line',
+      severity: 'high',
+      camera_id: 'CAM-003',
+      location: '股道3-4之间',
+      description: '横越线路时未执行手指口述眼看制度',
+      image_url: '',
+      status: 'pending',
+      created_at: new Date(Date.now() - 12 * 60000).toISOString()
+    },
+    {
+      id: '4',
+      alert_type: 'unsafe_distance',
+      severity: 'high',
+      camera_id: 'CAM-005',
+      location: '5号股道列车端部',
+      description: '通过列车端部时未留有安全距离，距离小于1米',
+      image_url: '',
+      status: 'pending',
+      created_at: new Date(Date.now() - 20 * 60000).toISOString()
+    },
+    {
+      id: '5',
+      alert_type: 'three_simultaneous',
+      severity: 'medium',
+      camera_id: 'CAM-001',
+      location: '1号股道电动脱轨器',
+      description: '上下电动脱轨器时未执行三同时制度',
+      image_url: '',
+      status: 'acknowledged',
+      created_at: new Date(Date.now() - 35 * 60000).toISOString()
     }
   ]
 })

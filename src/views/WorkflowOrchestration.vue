@@ -479,37 +479,37 @@ const draggingNode = ref<WorkflowNode | null>(null)
 const dragOffset = ref({ x: 0, y: 0 })
 
 const stats = ref({
-  gaitRecognitions: 1247,
-  faceRecognitions: 2385,
-  complianceChecks: 896,
-  alerts: 34
+  gaitRecognitions: 52,
+  faceRecognitions: 35,
+  complianceChecks: 87,
+  alerts: 5
 })
 
 const performanceMetrics = ref({
   avgResponseTime: 156,
   successRate: 97.8,
-  throughput: 1580,
+  throughput: 87,
   errorRate: 2.2
 })
 
 const executionLogs = ref([
-  { id: 1, time: '10:23:45', message: '步态识别节点执行成功', type: 'success' },
-  { id: 2, time: '10:23:46', message: '人脸识别节点执行成功', type: 'success' },
-  { id: 3, time: '10:23:47', message: '合规检测发现异常', type: 'warning' },
-  { id: 4, time: '10:23:48', message: '告警已触发并发送', type: 'info' }
+  { id: 1, time: '10:23:45', message: '检车员识别节点执行成功', type: 'success' },
+  { id: 2, time: '10:23:46', message: '身份验证节点执行成功', type: 'success' },
+  { id: 3, time: '10:23:47', message: '作业合规检测发现异常', type: 'warning' },
+  { id: 4, time: '10:23:48', message: '安全告警已触发并发送', type: 'info' }
 ])
 
 const executionTimeline = ref([
-  { id: 1, type: 'start', title: '工作流启动', timestamp: '10:23:45', description: '开始执行工作流' },
-  { id: 2, type: 'processing', title: '步态识别', timestamp: '10:23:45.234', description: '正在进行步态特征提取' },
-  { id: 3, type: 'processing', title: '人脸识别', timestamp: '10:23:46.102', description: '正在进行人脸特征匹配' },
-  { id: 4, type: 'success', title: '识别完成', timestamp: '10:23:46.876', description: '身份验证成功' }
+  { id: 1, type: 'start', title: '工作流启动', timestamp: '10:23:45', description: '开始执行检车作业监控流程' },
+  { id: 2, type: 'processing', title: '检车员识别', timestamp: '10:23:45.234', description: '正在进行检车员步态特征提取' },
+  { id: 3, type: 'processing', title: '身份验证', timestamp: '10:23:46.102', description: '正在进行检车员身份验证' },
+  { id: 4, type: 'success', title: '识别完成', timestamp: '10:23:46.876', description: '检车员身份验证成功' }
 ])
 
 const recentAlerts = ref([
-  { id: 1, level: 'error', title: '合规检测失败：未佩戴安全帽', time: '2分钟前' },
-  { id: 2, level: 'warning', title: '识别准确率下降', time: '15分钟前' },
-  { id: 3, level: 'info', title: '工作流执行完成', time: '30分钟前' }
+  { id: 1, level: 'error', title: '侵入邻线：距离邻线列车不足2米', time: '2分钟前' },
+  { id: 2, level: 'warning', title: '未佩戴防护帽：2号股道车底作业', time: '8分钟前' },
+  { id: 3, level: 'info', title: '检车作业监控流程执行完成', time: '15分钟前' }
 ])
 
 const availableNodes = [

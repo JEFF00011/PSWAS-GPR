@@ -1,8 +1,8 @@
 <template>
   <div class="compliance-detection">
     <div class="page-header">
-      <h1>动作合规检测</h1>
-      <p>安全装备检测 · 动作规范分析 · 流程合规校验</p>
+      <h1>铁路作业合规检测</h1>
+      <p>检车员作业监控 · 安全规范检测 · 违规行为识别</p>
     </div>
 
     <div class="stats-row">
@@ -13,8 +13,8 @@
           </svg>
         </div>
         <div class="stat-content">
-          <div class="stat-label">安全装备检测</div>
-          <div class="stat-value">4,523</div>
+          <div class="stat-label">今日作业检测</div>
+          <div class="stat-value">87</div>
         </div>
       </div>
 
@@ -25,8 +25,8 @@
           </svg>
         </div>
         <div class="stat-content">
-          <div class="stat-label">异常行为检测</div>
-          <div class="stat-value">327</div>
+          <div class="stat-label">检车员识别</div>
+          <div class="stat-value">52</div>
         </div>
       </div>
 
@@ -38,7 +38,7 @@
         </div>
         <div class="stat-content">
           <div class="stat-label">违规行为</div>
-          <div class="stat-value">23</div>
+          <div class="stat-value">5</div>
         </div>
       </div>
 
@@ -50,7 +50,7 @@
         </div>
         <div class="stat-content">
           <div class="stat-label">合规率</div>
-          <div class="stat-value">95.2%</div>
+          <div class="stat-value">94.3%</div>
         </div>
       </div>
     </div>
