@@ -63,6 +63,10 @@ export const useSystemStore = defineStore('system', () => {
     const alert = alerts.value.find(a => a.id === id)
     if (alert) {
       alert.status = status
+      if (status === 'resolved') {
+        alert.resolved_at = new Date().toISOString()
+        alert.resolved_by = 'SYS-ADMIN'
+      }
     }
   }
 

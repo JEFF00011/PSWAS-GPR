@@ -119,7 +119,7 @@
               <svg viewBox="0 0 24 24" width="16" height="16">
                 <path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
               </svg>
-              <span>已于 {{ formatTime(alert.resolved_at || '') }} 由 {{ alert.resolved_by }} 处理</span>
+              <span>已于 {{ formatTime(alert.resolved_at || '') }} 处理 ({{ alert.resolved_by || 'System' }})</span>
             </div>
           </div>
         </div>
@@ -198,13 +198,11 @@ const getSeverityLabel = (severity: string) => {
 
 const getTypeLabel = (type: string) => {
   const labels: Record<string, string> = {
-    no_helmet: '未佩戴安全帽',
-    no_vest: '未穿反光衣',
-    fall: '摔倒检测',
-    climb: '攀爬行为',
-    run: '奔跑检测',
-    gather: '人员聚集',
-    intrusion: '区域入侵'
+    cross_line: '横越线路违规',
+    intrusion: '侵入邻线',
+    no_helmet: '未佩戴防护帽',
+    unsafe_distance: '安全距离不足',
+    three_simultaneous: '未执行三同时'
   }
   return labels[type] || type
 }
